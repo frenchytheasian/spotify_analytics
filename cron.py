@@ -1,18 +1,13 @@
 import logging
 
-import spotipy
-
-from utils.credentials import SPOTIFY_AUTH
+from utils.spotify import get_data
 from db.firestore import add_track_to_db
-
-sp = spotipy.Spotify(auth_manager=SPOTIFY_AUTH())
 
 def main():
     logging.basicConfig(level=logging.INFO)
     logging.info("Running job")
     
-    results = sp.current_user_recently_played(limit=50)
-    tracks = results['items']
+    tracks = get_data()
 
     for track in tracks:
         add_track_to_db(track)

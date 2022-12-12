@@ -36,8 +36,9 @@ PRIVATE_KEY=<GOOGLE CLOUD PRIVATE KEY FOR CORRESPONDING GCP PROJECT>
 
 Run the following command and don't stop it
 ```bash
-python worker.py
+python worker.py <SLEEP AMOUNT>
 ```
+Where sleep amount is an integer value specifying the amount of minutes to sleep between queries.
 
 ## Running as a Cron Job
 
