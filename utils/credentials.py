@@ -27,3 +27,6 @@ def FIRESTORE_CRED():
         "token_uri": "https://oauth2.googleapis.com/token",
     })
     return cred
+
+if __name__ == "__main__":
+    SPOTIFY_AUTH()
