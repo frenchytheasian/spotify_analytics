@@ -1,5 +1,5 @@
 import json
-import time
+from datetime import datetime, timezone
 
 import spotipy
 import firebase_admin
@@ -18,17 +18,23 @@ def add_track_to_db(track: dict):
     Args:
         track (dict): The track to add.
     """
-    db_id = track['played_at']
-    track_ref = db.collection(u'tracks').document(db_id)
+    # dt stands for datetime
+    try:
+        dt = datetime.strptime(track['played_at'], "%Y-%m-%dT%H:%M:%S.%fZ")
+    except ValueError:
+        dt = datetime.strptime(track['played_at'], "%Y-%m-%dT%H:%M:%SZ")
+    dt = dt.replace(tzinfo=timezone.utc).astimezone(tz=None)
+    
+    track_ref = db.collection(str(dt.date())).document(str(dt))
     track_ref.set(track)
+
 
 def main():
     results = sp.current_user_recently_played(limit=50)
     tracks = results['items']
-    
+
     for track in tracks:
         add_track_to_db(track)
-        
-    
+
 if __name__ == "__main__":
     main()
