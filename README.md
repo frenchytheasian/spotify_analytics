@@ -2,6 +2,8 @@
 
 The goal of this project is to create an open source method for keeping track of your spotify data. Right now this program just pulls data and stores it in a firestore instance, but I want to make it so the user can swap out storage methods with their preferred method of storage. I also want to add analytics and tracking methods to this project.
 
+The overall goal of this project is to create a code base that can be cloned and ran as easily as possible. I ideally want users to be able to host this project on any platform and store the data in any database that they want.
+
 # Instructions for Running
 
 Run the build command to install necessary dependencies
@@ -32,13 +34,13 @@ PROJECT_ID=<GCP PROJECT ID>
 PRIVATE_KEY=<GOOGLE CLOUD PRIVATE KEY FOR CORRESPONDING GCP PROJECT>
 ```
 
-## Running as a Background Process
+<!-- ## Running as a Background Process
 
 Run the following command and don't stop it
 ```bash
 python worker.py <SLEEP AMOUNT>
 ```
-Where sleep amount is an integer value specifying the amount of minutes to sleep between queries.
+Where sleep amount is an integer value specifying the amount of minutes to sleep between queries. -->
 
 ## Running as a Cron Job
 
